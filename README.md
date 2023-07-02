@@ -26,6 +26,7 @@
 ![Static Badge](https://img.shields.io/badge/ReactJS-101010?logo=react&logoColor=%2361DAFB)
 ![Static Badge](https://img.shields.io/badge/ExpressJS-101010?logo=express&logoColor=%fff)
 ![Static Badge](https://img.shields.io/badge/Docker-101010?logo=docker&logoColor=%232496ED)
+![Static Badge](https://img.shields.io/badge/Python-101010?logo=python&logoColor=%233776AB)
 
 ### Contributing
 
@@ -51,4 +52,5 @@ git checkout -b <GitHub_usename>
 >
 > * Wait for the PR to be reviewed and merged.
 >
-> * Happy Coding!
+
+### Happy Coding!
