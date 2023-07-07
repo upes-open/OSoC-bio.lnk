@@ -1,0 +1,28 @@
+# Client Build Artifacts
+client/build
+
+# Server Dependencies
+server/node_modules
+
+# Environment Variables
+.env
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# macOS specific files
+.DS_Store
+
+# Editor Backup Files
+*~
+
+# Testing
+coverage/

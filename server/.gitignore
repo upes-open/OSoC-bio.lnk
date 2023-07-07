@@ -1,0 +1,15 @@
+# Server Dependencies
+node_modules/
+
+# Environment Variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Editor Backup Files
+*~
+
+# macOS specific files
+.DS_Store
