@@ -8,8 +8,8 @@
 ![Static Badge](https://img.shields.io/badge/Twitter-202020?logo=twitter&logoColor=%231DA1F2&link=https%3A%2F%2Ftwitter.com%2FUpesOpen) 
 ![Static Badge](https://img.shields.io/badge/Instagram-202020?logo=instagram&logoColor=%23E4405F&link=https%3A%2F%2Fwww.instagram.com%2Fupesopen_%2F)
 
-![GitHub contributors](https://img.shields.io/github/contributors/upes-open/OSoC-bio.lnk.git)
-![GitHub forks](https://img.shields.io/github/forks/upes-open/OSoC-bio.ln)
+![GitHub contributors](https://img.shields.io/github/contributors/upes-open/OSoC-bio.lnk)
+![GitHub forks](https://img.shields.io/github/forks/upes-open/OSoC-bio.lnk)
 ![GitHub Repo stars](https://img.shields.io/github/stars/upes-open/OSoC-bio.lnk)
 ![GitHub issues](https://img.shields.io/github/issues/upes-open/OSoC-bio.lnk)
 
