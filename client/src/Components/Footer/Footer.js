@@ -3,6 +3,8 @@ import React from 'react';
 import bioLnkIcon from './images/BioLnk.svg';
 import discordLogo from './images/discord.svg';
 import githubLogo from './images/github.svg';
+import logo from './images/bio-lnk.png'
+
 
 import './Footer.css';
 function Footer() {
@@ -10,8 +12,7 @@ function Footer() {
         <footer className="footer">
             <div className="footer-row">
                 <div className="footer-item">
-                    <img src={bioLnkIcon} alt="Bio.lnk Icon" className="footer-icon" />
-                    <div className="footer-item-text">Bio-lnk</div>
+                    <img src={logo} alt="Bio.lnk Icon" className="footer-logo" />
                 </div>
             </div>
             <div className="footer-row">
