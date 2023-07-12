@@ -1,6 +1,5 @@
 import React from 'react';
 
-import bioLnkIcon from './images/BioLnk.svg';
 import discordLogo from './images/discord.svg';
 import githubLogo from './images/github.svg';
 import logo from './images/bio-lnk.png'
