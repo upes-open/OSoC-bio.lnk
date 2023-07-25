@@ -1,0 +1,45 @@
+.footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .footer-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .footer-item {
+    display: flex;
+    align-items: center;
+  }
+  .footer-logo {
+    width: 120px;
+    margin-right: 10px;
+  }
+  .footer-icon {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  .footer-item-text {
+    font-weight: bold;
+  }
+  
+  .footer-company-description {
+    font-size: 15px;
+    color: #555555;
+  }
+  
+
+  
+  .footer-copyright {
+    font-size: 12px;
+    color: #777777;
+    margin-top: 10px;
+  }
+
+
+  
