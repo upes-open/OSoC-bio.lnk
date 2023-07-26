@@ -129,6 +129,10 @@ app.post('/logout', function(req, res, next) {
     res.json({ meessage: 'Successfully logged out' });
   });
 });
+
+app.get("/", (req,res) => {
+  res.send("<h2>Server is running Successfully</h2>")
+});
 // ... Other routes ...
 
 // Start the server
