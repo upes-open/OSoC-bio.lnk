@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -8,17 +9,24 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 
 
+
 const User = require('./models/User'); // Assuming the User model is in a separate file
 
 const app = express();
 app.use(cors())
 
+const MONGODB_URI = process.env.MONGO_URI;
 // Connect to MongoDB
-const MONGODB_URI = 'mongodb://localhost:27017/biolink';
+if (!MONGODB_URI) {
+  console.error('MongoDB connection URI not found in the environment.');
+  process.exit(1);
+}
+
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
