@@ -16,23 +16,42 @@ const app = express();
 app.use(cors())
 
 const MONGODB_URI = process.env.MONGO_URI;
-// Connect to MongoDB
+const MAX_RETRY_ATTEMPTS = 5;
+const RETRY_INTERVAL_MS = 5000; // 5 seconds
+
+const connectWithRetry = (retryCount) => {
+  if (!retryCount) retryCount = 0;
+
+  if (retryCount >= MAX_RETRY_ATTEMPTS) {
+    console.error('MongoDB connection failed after maximum retry attempts.');
+    process.exit(1);
+  }
+
+  console.log('Attempting to connect to MongoDB...');
+  mongoose
+    .connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      console.log('Connected to MongoDB');
+    })
+    .catch((err) => {
+      console.error('MongoDB connection error:', err);
+      console.log(`Retrying MongoDB connection in ${RETRY_INTERVAL_MS / 1000} seconds...`);
+
+      setTimeout(() => {
+        connectWithRetry(retryCount + 1);
+      }, RETRY_INTERVAL_MS);
+    });
+};
+
 if (!MONGODB_URI) {
   console.error('MongoDB connection URI not found in the environment.');
   process.exit(1);
 }
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
-
+connectWithRetry();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
