@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -8,23 +9,49 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 
 
+
 const User = require('./models/User'); // Assuming the User model is in a separate file
 
 const app = express();
 app.use(cors())
 
-// Connect to MongoDB
-const MONGODB_URI = 'mongodb://localhost:27017/biolink';
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+const MONGODB_URI = process.env.MONGO_URI;
+const MAX_RETRY_ATTEMPTS = 5;
+const RETRY_INTERVAL_MS = 5000; // 5 seconds
 
+const connectWithRetry = (retryCount) => {
+  if (!retryCount) retryCount = 0;
+
+  if (retryCount >= MAX_RETRY_ATTEMPTS) {
+    console.error('MongoDB connection failed after maximum retry attempts.');
+    process.exit(1);
+  }
+
+  console.log('Attempting to connect to MongoDB...');
+  mongoose
+    .connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      console.log('Connected to MongoDB');
+    })
+    .catch((err) => {
+      console.error('MongoDB connection error:', err);
+      console.log(`Retrying MongoDB connection in ${RETRY_INTERVAL_MS / 1000} seconds...`);
+
+      setTimeout(() => {
+        connectWithRetry(retryCount + 1);
+      }, RETRY_INTERVAL_MS);
+    });
+};
+
+if (!MONGODB_URI) {
+  console.error('MongoDB connection URI not found in the environment.');
+  process.exit(1);
+}
+
+connectWithRetry();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -120,6 +147,10 @@ app.post('/logout', function(req, res, next) {
     if (err) { return next(err); }
     res.json({ meessage: 'Successfully logged out' });
   });
+});
+
+app.get("/", (req,res) => {
+  res.send("<h2>Server is running Successfully</h2>")
 });
 // ... Other routes ...
 
