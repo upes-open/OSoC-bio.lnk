@@ -17,7 +17,11 @@
 
 ### About the Project
 
-> A web based application to create link in bio page which would contain all your socials . It would provide modern UI elements, customisation options with dynamic interface. The platform would feature powerful integration with social media platforms and so you don't miss on your profile. The main highlights of the project would be animating profile elements in form of resizable containers to fit one's perspective. This application won't be restricted to display just profile links, we can also display a lot more information such as adding gifs, live wallpapers, playlists, and many more with just one click.
+> A web-based application to create a link in the bio page that would contain all your socials. It would provide modern UI elements, and customization options with a dynamic interface. The platform would feature powerful integration with social media platforms so you don't miss out on your profile. The main highlights of the project would be animating profile elements in the form of resizable containers to fit one's perspective. This application won't be restricted to displaying just profile links, we can also display a lot more information such as adding gifs, live wallpapers, playlists, and many more with just one click.
+
+### Workflow
+
+To look for the complete workflow, to develop an understanding of the project, click [here!](https://www.canva.com/design/DAFpqU4uo8g/NaJNvnk1m9CgT-VRGZqcQA/edit?utm_content=DAFpqU4uo8g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ### Tech Stack
 
