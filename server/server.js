@@ -8,11 +8,16 @@ const session = require('express-session');
 const uuid = require('uuid');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const bodyParser = require('body-parser');
+
+
+const GitHubProfileRouter = require('./routes/GitHubProfile');
 
 const User = require('./models/User');
 
 const app = express();
 app.use(cors());
+
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -246,6 +251,12 @@ app.get('/logout', function (req, res, next) {
   });
 });
 
+
+/////Github Scrapping test
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api', GitHubProfileRouter);
+////////////////////////
 
 app.get('/', (req, res) => {
   res.send('<h2>Server is running Successfully</h2>');
