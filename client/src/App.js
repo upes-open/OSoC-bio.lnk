@@ -5,14 +5,15 @@ import './App.css';
 // import Signup from './Components/Login/Signup';
 // import Dashboard from './Components/Login/Dashboard';
 import Footer from './Components/Footer/Footer';
+import GoogleLoginButton from './Components/Login/GoogleLoginButton';
 
 const App = () => {
   return (
     <Router>
       <div>
         <Routes>
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<GoogleLoginButton />} />
+          {/* <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} /> */}
           {/* <Route index element={<Login />} /> */}
           {/* Add other routes or components as needed */}
