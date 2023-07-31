@@ -2,8 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Discord = require('discord.js');
+const { Client, Intents } = require('discord.js');
+
+
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+
 const session = require('express-session');
 const uuid = require('uuid');
 const cors = require('cors');
@@ -12,20 +18,13 @@ const bodyParser = require('body-parser');
 
 
 const GitHubProfileRouter = require('./routes/GitHubProfile');
+const TwitterProfileRouter = require('./routes/TwitterProfile');
+const DiscordProfileRouter = require('./routes/DiscordProfile');
 
 const User = require('./models/User');
 
 const app = express();
 app.use(cors());
-
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
 
 const MONGODB_URI = process.env.MONGO_URI;
 const MAX_RETRY_ATTEMPTS = 5;
@@ -252,10 +251,15 @@ app.get('/logout', function (req, res, next) {
 });
 
 
-/////Github Scrapping test
+// Routes
+app.use(express.json());
+
+///// Scrapping test
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', GitHubProfileRouter);
+app.use('/api', TwitterProfileRouter);
+app.use('/api', DiscordProfileRouter);
 ////////////////////////
 
 app.get('/', (req, res) => {
