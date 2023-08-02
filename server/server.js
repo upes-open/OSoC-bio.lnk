@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const Discord = require('discord.js');
-const { Client, Intents } = require('discord.js');
 
 
 const LocalStrategy = require('passport-local').Strategy;
@@ -20,8 +19,10 @@ const bodyParser = require('body-parser');
 const GitHubProfileRouter = require('./routes/GitHubProfile');
 const TwitterProfileRouter = require('./routes/TwitterProfile');
 const DiscordProfileRouter = require('./routes/DiscordProfile');
+const playlistRoutes = require('./routes/playlistRoutes');
 
 const User = require('./models/User');
+const playlist = require('./models/playlist');
 
 const app = express();
 app.use(cors());
@@ -124,6 +125,7 @@ passport.use(
             const newUser = new User({
               email: profile.emails[0].value,
               googleId: profile.id,
+              displayName: profile.displayName, // Set the displayName manually
             });
             await newUser.save();
             return done(null, newUser);
@@ -135,7 +137,7 @@ passport.use(
       }
     }
   )
-);
+  );
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -144,13 +146,13 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   User.findById(id)
     .then((user) => {
+      console.log("Deserialized user:", user); // Add this line to log the user object
       done(null, user);
     })
     .catch((err) => {
       done(err);
     });
 });
-
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/dashboard',
   failureRedirect: '/login',
@@ -204,11 +206,11 @@ app.get('/dashboard', (req, res) => {
 });
 
 app.get('/auth/google',
-  passport.authenticate('google', { scope: [ 'email', 'profile' ] }
-));
+  passport.authenticate('google', { scope: ['email', 'profile'] }
+  ));
 
-app.get( '/auth/google/callback',
-  passport.authenticate( 'google', {
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
     successRedirect: '/protected',
     failureRedirect: '/auth/google/failure'
   })
@@ -260,6 +262,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', GitHubProfileRouter);
 app.use('/api', TwitterProfileRouter);
 app.use('/api', DiscordProfileRouter);
+app.use('/api', playlistRoutes);
+
 ////////////////////////
 
 app.get('/', (req, res) => {
