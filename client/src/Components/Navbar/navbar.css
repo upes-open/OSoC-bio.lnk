@@ -1,0 +1,39 @@
+.navbar-layout {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+    align-items: center;
+}
+
+.anchor-biolink {
+	font-family: monospace;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 2rem;
+}
+.navbar-anchor {
+	font-family: monospace;
+	text-decoration: none;
+	position: relative;
+	margin: 0 2.5rem 0 2.5rem;
+	font-size: 1.5rem;
+	padding-bottom: 0.25rem;
+}
+
+.navbar-anchor::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 0.2rem;
+	background-color: rgb(255, 145, 0);
+	text-decoration: underline;
+	transform: scale(0, 1);
+}
+
+.navbar-anchor:hover::after {
+	width: 100%;
+	transform: scale(1, 1);
+	transition: 0.3s ease;
+}

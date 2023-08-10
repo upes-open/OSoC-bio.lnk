@@ -4,6 +4,7 @@ import './App.css';
 // import Login from './Components/Login/Login';
 // import Signup from './Components/Login/Signup';
 // import Dashboard from './Components/Login/Dashboard';
+import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import GoogleLoginButton from './Components/Login/GoogleLoginButton';
 
@@ -20,6 +21,7 @@ const App = () => {
           {/* <Route path="/profile" element={<UserProfile />} /> */}
           {/* <Route path="/settings" element={<UserSettings />} /> */}
         </Routes>
+        <Navbar />
         <Footer />
       </div>
     </Router>
