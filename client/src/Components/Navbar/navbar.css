@@ -2,7 +2,15 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-    align-items: center;
+	align-items: center;
+	height: 10vh;
+	padding-left: 1rem;
+	background-color: #f8f8f8;
+}
+
+.anchor-tags {
+	display: flex;
+	flex-direction: row;
 }
 
 .anchor-biolink {

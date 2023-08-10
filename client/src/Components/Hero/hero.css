@@ -1,0 +1,68 @@
+.hero {
+	display: flex;
+	flex-direction: row;
+	height: 70vh;
+	align-items: center;
+    width: 100vw;
+}
+
+.hero-section1,
+.hero-section2 {
+    width: 50vw;
+	display: inline-flex;
+    margin: 2rem;
+}
+
+.hero-section1 {
+	flex-direction: column;
+	align-items: center;
+}
+
+.hero-text {
+	font-family: monospace;
+	font-size: 3em;
+}
+
+.stand-out {
+	margin-top: 10px;
+	color: #583967;
+	font-weight: 700;
+}
+
+.hero-section2 {
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    height: 60vh;
+    border-radius: 10px;
+    border: 3px solid #bca48c;
+}
+
+.login,
+.signup {
+	font-family: monospace;
+	margin: 1rem;
+	padding: 0.7rem;
+	font-size: 1.2rem;
+	border: 2.5px solid #583967;
+	border-radius: 5px;
+	color: #ffffff;
+}
+
+.login:hover,
+.signup:hover {
+	cursor: pointer;
+    color: #583967;
+    background-color: #ffffff;
+    transition: 0.3s ease-out;
+}
+
+.login {
+	background-color: #bca48c;
+}
+
+.signup {
+	background-color: #84685c;
+}
