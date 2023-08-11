@@ -7,7 +7,7 @@ const Navbar = () => {
 			<a href='/' className='anchor-biolink'>
 				bio.lnk
 			</a>
-			<div className='anchor tags'>
+			<div className='anchor-tags'>
 				<a href='/' className='navbar-anchor'>
 					Home
 				</a>

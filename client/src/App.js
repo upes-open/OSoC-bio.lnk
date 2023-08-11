@@ -5,6 +5,7 @@ import './App.css';
 // import Signup from './Components/Login/Signup';
 // import Dashboard from './Components/Login/Dashboard';
 import Navbar from './Components/Navbar/Navbar';
+import Hero from './Components/Hero/Hero';
 import Footer from './Components/Footer/Footer';
 import GoogleLoginButton from './Components/Login/GoogleLoginButton';
 
@@ -22,6 +23,7 @@ const App = () => {
           {/* <Route path="/settings" element={<UserSettings />} /> */}
         </Routes>
         <Navbar />
+        <Hero />
         <Footer />
       </div>
     </Router>
